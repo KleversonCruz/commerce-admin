@@ -3,13 +3,13 @@ import Role from "./Role"
 export default class User {
     #id: number
     #userName: string
-    #lojaId: number
+    #shopId: number
     #userRoles: Role[]
 
-    constructor(id: number, userName: string, lojaId: number, userRoles: Role[]) {
+    constructor(id: number, userName: string, shopId: number, userRoles: Role[]) {
         this.#id = id
         this.#userName = userName
-        this.#lojaId = lojaId
+        this.#shopId = shopId
         this.#userRoles = userRoles
     }
 
@@ -21,8 +21,8 @@ export default class User {
         return this.#userName
     }
 
-    get lojaId() {
-        return this.#lojaId
+    get shopId() {
+        return this.#shopId
     }
 
     get userRoles() {
@@ -33,7 +33,7 @@ export default class User {
         return new User(
             obj.id, 
             obj.userName, 
-            obj.lojaId,
+            obj.shopId,
             obj.userRoles,
         )
     }
@@ -42,7 +42,7 @@ export default class User {
         return{
             id: this.#id,
             userName: this.#userName,
-            lojaId: this.#lojaId,
+            shopId: this.#shopId,
             userRoles: this.#userRoles,
         }
     }

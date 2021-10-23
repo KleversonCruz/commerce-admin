@@ -1,4 +1,4 @@
-import Categoria from "@data/core/Categoria"
+import Category from "@data/core/Category"
 import { useEffect, useState } from "react"
 import useNotify from "./useNotify"
 

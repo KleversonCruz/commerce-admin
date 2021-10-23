@@ -3,9 +3,12 @@ import { SearchIcon } from "@heroicons/react/outline"
 interface SearchInputProps {
     placeholder?: string
     className?: string
-    searchAction: (e) => void
+    id?: string
+    register?: any
+    searchAction?: (e) => void
 }
 export default function SearchInput(props: SearchInputProps) {
+    const register = props.register
     return (
         <>
             <div className="flex-1 min-w-0">
@@ -18,11 +21,11 @@ export default function SearchInput(props: SearchInputProps) {
                     </div>
                     <input
                         type="search"
-                        onChange={e => props.searchAction(e.target.value)}
+                        {...register(props.id)}
                         placeholder={props.placeholder}
                         className={`focus:ring-gray-500 focus:border-gray-500 block w-full pl-10 sm:text-sm rounded-md
-                  bg-gray-50 dark:bg-warmGray-800 border-gray-300 dark:border-warmGray-900
-                  ${props.className}`}
+                            bg-gray-50 dark:bg-warmGray-800 border-gray-300 dark:border-warmGray-900
+                            ${props.className}`}
                     />
                 </div>
             </div>

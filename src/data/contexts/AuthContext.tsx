@@ -21,7 +21,7 @@ export const AuthContext = createContext({} as AuthContextType)
 export function AuthProvider({ children }) {
   const [user, setUser] = useState<User | null>(null)
 
-  const { loadLoja, changeIsLoading } = useApp()
+  const { loadShop: loadLoja, changeIsLoading } = useApp()
 
   const roleRequired = 'loja'
   const isAuthenticated = !!user;
@@ -69,7 +69,7 @@ export function AuthProvider({ children }) {
         return response?.userData
       })
       setUser(userData)
-      await loadLoja(userData?.lojaId)
+      await loadLoja(userData?.shopId)
     }
     catch (error) {
       return {

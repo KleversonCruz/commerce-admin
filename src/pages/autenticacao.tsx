@@ -1,8 +1,7 @@
-import { useContext } from "react";
-import SignIn from '@components/forms/autenticacaoForm'
+import Form from '@components/forms/authForm'
 
 export default function Autenticacao (){
     return (
-        <SignIn></SignIn>
+        <Form></Form>
     )
 }

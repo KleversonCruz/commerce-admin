@@ -1,31 +1,33 @@
 import type { NextPage } from 'next'
 import Shell from '@components/layout/shell'
-import Table from '@components/tables/categoriaTable'
-import useCategoria from '@data/hooks/useCategoria'
+import Table from '@components/tables/categoryTable'
+import useCategoria from '@data/hooks/useCategory'
 import FormModal from '@components/overlays/formModal'
-import Form from '@components/forms/categoriaForm'
+import Form from '@components/forms/categoryForm'
 
 
 const Categoria: NextPage = () => {
   const {
-    categoria,
-    filtredData,
+    category,
+    categories,
     dialogCardOpen,
+    pagination,
     setDialogCardOpen,
     add,
     save,
     remove,
     select,
     search,
+    paginate
   } = useCategoria()
 
   return (
     <>
       <Shell title="Categorias">
         <FormModal open={dialogCardOpen} setOpen={setDialogCardOpen}>
-          <Form saveAction={save} cancelAction={setDialogCardOpen} categoria={categoria} />
+          <Form saveAction={save} cancelAction={setDialogCardOpen} category={category} />
         </FormModal>
-        <Table categorias={filtredData} selectAction={select} addAction={add} deleteAction={remove} searchAction={search} />
+        <Table categories={categories} selectAction={select} addAction={add} deleteAction={remove} searchAction={search} pagination={pagination} paginate={paginate} />
       </Shell>
     </>
   )

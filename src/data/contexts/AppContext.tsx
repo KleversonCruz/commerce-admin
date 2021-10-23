@@ -1,12 +1,12 @@
-import Loja from "@data/core/Loja";
+import Shop from "@data/core/Shop";
 import { createContext, useEffect, useState } from "react";
-import { GetOneRequest as getLojaRequest } from "@data/services/lojaServices";
+import { GetShopById as getLojaRequest } from "@data/services/shopServices";
 
 type AppContextType = {
     themes;
-    loja: Loja
+    shop: Shop
     isLoading: boolean
-    loadLoja: (lojaId: number) => Promise<void>
+    loadShop: (shopId: number) => Promise<void>
     changeIsLoading: (state: boolean) => void
 }
 
@@ -28,14 +28,14 @@ const themes = [
 ];
 
 export function AppProvider({ children }) {
-    const [loja, setLoja] = useState<Loja | null>(null)
+    const [shop, setShop] = useState<Shop | null>(null)
     const [isLoading, setIsLoading] = useState(true)
 
-    async function loadLoja(lojaId: number) {
-        const lojaData = await getLojaRequest(lojaId).then(response => {
+    async function loadLoja(shopId: number) {
+        const data = await getLojaRequest(shopId).then(response => {
             return response?.data
         })
-        setLoja(lojaData)
+        setShop(data)
     }
 
     async function changeIsLoading(state: boolean) {
@@ -43,7 +43,7 @@ export function AppProvider({ children }) {
     }
 
     return (
-        <AppContext.Provider value={{ themes, loja, loadLoja, changeIsLoading, isLoading }}>
+        <AppContext.Provider value={{ themes, shop: shop, loadShop: loadLoja, changeIsLoading, isLoading }}>
             {children}
         </AppContext.Provider>
     )

@@ -4,6 +4,7 @@ import { XIcon } from '@heroicons/react/outline'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import useApp from '@data/hooks/UseApp'
+import { api } from '@data/services/api'
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ')
@@ -11,7 +12,7 @@ function classNames(...classes) {
 
 export default function Sidebar(props) {
   const router = useRouter()
-  const { loja } = useApp()
+  const { shop } = useApp()
 
   return (
     <>
@@ -64,11 +65,13 @@ export default function Sidebar(props) {
                 </div>
               </Transition.Child>
               <div className="flex-shrink-0 flex items-center px-4">
-                <img
-                  className="h-8 w-auto"
-                  src={loja?.imageUrl}
-                  alt="Workflow"
-                />
+                {shop?.imageUrl ? (
+                  <img
+                    className="h-8 w-auto"
+                    src={`${api.defaults.baseURL}/images/${shop?.imageUrl}`}
+                    alt="Workflow"
+                  />
+                ) : null}
               </div>
               <div className="mt-5 flex-1 h-0 overflow-y-auto">
                 <nav className="px-2 space-y-1">
@@ -110,11 +113,13 @@ export default function Sidebar(props) {
           {/* Sidebar component, swap this element with another sidebar if you like */}
           <div className="flex flex-col flex-grow pt-5 pb-4 overflow-y-auto bg-gray-100 dark:bg-warmGray-800">
             <div className="flex items-center flex-shrink-0 px-4">
-              <img
-                className="h-8 w-auto"
-                src={loja?.imageUrl}
-                alt="Workflow"
-              />
+              {shop?.imageUrl ? (
+                <img
+                  className="h-8 w-auto"
+                  src={`${api.defaults.baseURL}/images/${shop?.imageUrl}`}
+                  alt="Workflow"
+                />
+              ) : null}
             </div>
             <div className="mt-5 flex-grow flex flex-col">
               <nav className="flex-1 px-2 space-y-1">

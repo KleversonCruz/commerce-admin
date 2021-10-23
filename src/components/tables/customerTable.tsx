@@ -1,26 +1,31 @@
 import Pagination from "@components/navigation/pagination";
-import { EyeIcon, PencilIcon, PlusIcon, SearchIcon, TagIcon, TrashIcon, UserIcon } from "@heroicons/react/outline";
-import Cliente from "@data/core/Cliente"
+import { EyeIcon, UserIcon } from "@heroicons/react/outline";
+import Customer from "@data/core/Customer"
 import { useState } from "react";
 import SearchInput from "@components/elements/inputs/searchInput";
-import SecondaryButton from "@components/elements/buttons/secondaryButton";
+import { useForm } from "react-hook-form";
 
 interface TableProps {
-  clientes: Cliente[]
-  selectAction: (clientes: Cliente) => void
-  deleteAction: (clientes: Cliente) => void
+  customers: Customer[]
+  selectAction: (clientes: Customer) => void
+  deleteAction: (clientes: Customer) => void
   searchAction: (param: string) => void
   addAction: () => void
+  paginate: (params?: any) => void
+  pagination: any
 }
 
 export default function Table(props: TableProps) {
-  const [currentPage, setCurrentPage] = useState(1)
-  const [entriesPerPage] = useState(10)
+  const { register, handleSubmit } = useForm()
 
-  const indexOfLast = currentPage * entriesPerPage
-  const indexOfFirst = indexOfLast - entriesPerPage
-  const currentEntries = props.clientes.slice(indexOfFirst, indexOfLast)
-  const onPageChange = pageNumber => setCurrentPage(pageNumber)
+  const [alertModalopenOpen, setAlertModalOpen] = useState(false)
+  const [selectedItem, setSelectectItem] = useState<Customer>()
+
+  const onPageChange = pageNumber => props.paginate(pageNumber)
+
+  const onSearch = async (data) => {
+    props.searchAction(data.search)
+  }
 
   return (
     <div className="overflow-hidden shadow rounded-lg divide-y 
@@ -28,9 +33,11 @@ export default function Table(props: TableProps) {
     ">
       {/* card head*/}
       <div className="px-4 py-5 sm:px-6">
-        <div className="mt-6 flex space-x-4">
-          <SearchInput placeholder="Pesquisar..." searchAction={props.searchAction} />
-        </div>
+        <form onSubmit={handleSubmit(onSearch)}>
+          <div className="mt-6 flex space-x-4">
+            <SearchInput placeholder="Pesquisar..." register={register} id={"search"} />
+          </div>
+        </form>
       </div>
 
       {/* card body*/}
@@ -72,7 +79,7 @@ export default function Table(props: TableProps) {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-200 dark:divide-warmGray-900">
-                    {currentEntries?.map((item) => (
+                    {props.customers?.map((item) => (
                       <tr key={item.id}>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <div className="flex items-center">
@@ -82,15 +89,15 @@ export default function Table(props: TableProps) {
                               </span>
                             </div>
                             <div className="ml-4">
-                              <div className="text-sm font-medium">{item.nome}</div>
-                              <div className="text-sm">{item.sobrenome}</div>
+                              <div className="text-sm font-medium">{item.firstName}</div>
+                              <div className="text-sm">{item.lastName}</div>
                             </div>
                           </div>
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm">
                           <div className="flex items-center">
                             <div>
-                              <div className="text-sm font-medium">{item.telefone}</div>
+                              <div className="text-sm font-medium">{item.telephone}</div>
                               <div className="text-sm">{item.email}</div>
                             </div>
                           </div>
@@ -98,8 +105,8 @@ export default function Table(props: TableProps) {
                         <td className="px-6 py-4 whitespace-nowrap text-sm">
                           <div className="flex items-center">
                             <div>
-                              <div className="text-sm font-medium">{item.enderecos[0]?.logradouro}</div>
-                              <div className="text-sm">{`${item.enderecos[0]?.cidade} / ${item.enderecos[0]?.uf}`}</div>
+                              <div className="text-sm font-medium">{item.addresses[0]?.addressLine1}</div>
+                              <div className="text-sm">{`${item.addresses[0]?.city} / ${item.addresses[0]?.state}`}</div>
                             </div>
                           </div>
                         </td>
@@ -137,7 +144,7 @@ export default function Table(props: TableProps) {
 
       {/* card footer*/}
       <div className="px-4 py-4 sm:px-6">
-        <Pagination entriesPerPage={entriesPerPage} totalEntries={props.clientes.length} onPageChange={onPageChange} currentPage={currentPage} />
+        <Pagination pagination={props?.pagination} onPageChange={onPageChange} />
       </div>
     </div>
   )

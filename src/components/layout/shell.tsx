@@ -24,9 +24,9 @@ const navigation = [
 export default function Shell(props) {
     const [sidebarOpen, setSidebarOpen] = useState(false)
     const { setTheme } = useTheme();
-    const { loja } = useApp()
+    const { shop: loja } = useApp()
 
-    useEffect(() => { setTheme(loja?.lojaConfig?.corPrimaria), [] })
+    useEffect(() => { setTheme(loja?.colorTheme), [] })
 
     return (
         <>

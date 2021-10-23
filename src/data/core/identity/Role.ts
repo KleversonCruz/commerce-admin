@@ -1,25 +1,25 @@
 
 export default class Role {
-    #nome: string
+    #name: string
 
     constructor(nome: string) {
-        this.#nome = nome
+        this.#name = nome
     }
 
-    get nome() {
-        return this.#nome
+    get name() {
+        return this.#name
     }
 
     toObject() {
         return{
-            nome: this.#nome,
+            name: this.#name,
         }
     }
 
 
     static createObject(obj: Role): Role {
         return new Role(
-            obj.nome, 
+            obj.name, 
         )
     }
 }

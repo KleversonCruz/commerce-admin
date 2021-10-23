@@ -3,8 +3,8 @@ import { Menu, Transition } from "@headlessui/react";
 import { BellIcon, MenuAlt2Icon, UserIcon } from "@heroicons/react/outline";
 import { Fragment, useState } from "react";
 import FormModal from "@components/overlays/formModal";
-import Form from "@components/forms/lojaForm";
-import useLoja from "@data/hooks/useLoja";
+import Form from "@components/forms/shopForm";
+import useLoja from "@data/hooks/useShop";
 import AlertModal from "@components/overlays/alertModal";
 
 export default function Navbar(props) {
@@ -83,7 +83,7 @@ export default function Navbar(props) {
             </div>
 
             <FormModal open={dialogCardOpen} setOpen={setDialogCardOpen}>
-                <Form saveAction={save} cancelAction={setDialogCardOpen} loja={loja} />
+                <Form saveAction={save} cancelAction={setDialogCardOpen} shop={loja} />
             </FormModal>
 
             <AlertModal title="Atenção" message="Deseja sair da aplicação?"

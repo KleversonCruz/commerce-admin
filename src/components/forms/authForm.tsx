@@ -1,4 +1,3 @@
-import PrimaryButton from "@components/elements/buttons/primaryButton";
 import SecondaryButton from "@components/elements/buttons/secondaryButton";
 import FormGroup from "@components/elements/inputs/formGroup";
 import { AuthContext } from "@data/contexts/AuthContext";
@@ -17,10 +16,10 @@ export default function Form() {
     const toastId = notifyLoading('Por favor aguarde')
     await signIn(data).then(response => {
       response?.message ?
-      notifyLoadingUpdate(toastId, response?.message, 'error')
-      : notifyLoadingUpdate(toastId,'Login realizado', 'success')
+        notifyLoadingUpdate(toastId, response?.message, 'error')
+        : notifyLoadingUpdate(toastId, 'Login realizado', 'success')
     })
-    
+
   }
 
   return (
