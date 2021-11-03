@@ -8,6 +8,8 @@ export default class Loja {
     #name: string
     #desc: string
     #email: string
+    #brandImageUrl: string
+    #brandImageFile: any
     #imageUrl: string
     #imageFile: any
     #colorTheme: string
@@ -15,12 +17,14 @@ export default class Loja {
     #categories: Category[]
     #customers: Customer[]
 
-    constructor(id: number, cnpj: string, name: string, desc: string, email: string, imageUrl: string, imageFile: any, colorTheme: string, categories: Category[], products: Product[], customers: Customer[]) {
+    constructor(id: number, cnpj: string, name: string, desc: string, email: string, brandImageUrl: string, brandImageFile: any, imageUrl: string, imageFile: any, colorTheme: string, categories: Category[], products: Product[], customers: Customer[]) {
         this.#id = id
         this.#cnpj = cnpj
         this.#name = name
         this.#desc = desc
         this.#email = email
+        this.#brandImageUrl = brandImageUrl
+        this.#brandImageFile = brandImageFile
         this.#imageUrl = imageUrl
         this.#imageFile = imageFile
         this.#colorTheme = colorTheme
@@ -49,14 +53,22 @@ export default class Loja {
         return this.#email
     }
 
+    get brandImageFile() {
+        return this.#brandImageFile
+    }
+
+    get brandImageUrl() {
+        return this.#brandImageUrl
+    }
+
     get imageFile() {
         return this.#imageFile
     }
-    
+
     get imageUrl() {
         return this.#imageUrl
     }
-    
+
     get colorTheme() {
         return this.#colorTheme
     }
@@ -68,18 +80,20 @@ export default class Loja {
     get categories() {
         return this.#categories
     }
-    
+
     get customers() {
         return this.#customers
     }
 
     toObject() {
-        return{
+        return {
             id: this.#id,
             cnpj: this.#cnpj,
             name: this.#name,
             desc: this.#desc,
             email: this.#email,
+            brandImageUrl: this.#brandImageUrl,
+            brandImageFile: this.#brandImageFile,
             imageUrl: this.#imageUrl,
             imageFile: this.#imageFile,
             colorTheme: this.#colorTheme,
@@ -96,6 +110,8 @@ export default class Loja {
             obj.name,
             obj.desc,
             obj.email,
+            obj.brandImageUrl,
+            obj.brandImageFile,
             obj.imageUrl,
             obj.imageFile,
             obj.colorTheme,

@@ -98,8 +98,9 @@ function CreateFormData(shop: Shop) {
     formData.append('Cnpj', shop.cnpj);
     formData.append('Desc', shop.desc);
     formData.append('Email', shop.email);
+    formData.append('BrandImageUrl', shop.brandImageUrl);
+    formData.append('BrandImageFile', shop?.brandImageFile[0]);
     formData.append('ImageUrl', shop.imageUrl);
-    formData.append('ImageFile', shop?.imageFile[0]);
     formData.append('ColorTheme', shop.colorTheme);
     return formData;
 }

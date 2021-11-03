@@ -65,10 +65,10 @@ export default function Sidebar(props) {
                 </div>
               </Transition.Child>
               <div className="flex-shrink-0 flex items-center px-4">
-                {shop?.imageUrl ? (
+                {shop?.brandImageUrl ? (
                   <img
                     className="h-8 w-auto"
-                    src={`${api.defaults.baseURL}/images/${shop?.imageUrl}`}
+                    src={`${api.defaults.baseURL}/images/${shop?.brandImageUrl}`}
                     alt="Workflow"
                   />
                 ) : null}
@@ -113,10 +113,10 @@ export default function Sidebar(props) {
           {/* Sidebar component, swap this element with another sidebar if you like */}
           <div className="flex flex-col flex-grow pt-5 pb-4 overflow-y-auto bg-gray-100 dark:bg-warmGray-800">
             <div className="flex items-center flex-shrink-0 px-4">
-              {shop?.imageUrl ? (
+              {shop?.brandImageUrl ? (
                 <img
                   className="h-8 w-auto"
-                  src={`${api.defaults.baseURL}/images/${shop?.imageUrl}`}
+                  src={`${api.defaults.baseURL}/images/${shop?.brandImageUrl}`}
                   alt="Workflow"
                 />
               ) : null}

@@ -26,9 +26,11 @@ export default function Form(props: FormProps) {
     setValue('cnpj', props.shop.cnpj);
     setValue('email', props.shop.email);
     setValue('colorTheme', props.shop.colorTheme);
+    setValue('brandImageUrl', props.shop.brandImageUrl);
     setValue('imageUrl', props.shop.imageUrl);
 
     const onSubmit = async (data) => {
+        console.log(data)
         await props.saveAction(Shop.createObject(data))
     }
 
@@ -46,14 +48,15 @@ export default function Form(props: FormProps) {
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className="px-4 py-5 space-y-6 sm:p-6 flex-grow">
                     <div className="mt-6 flex flex-col lg:flex-row">
-                        <ImgInput register={register} label="Imagem" id={"imageFile"} icon={PhotographIcon} imageUrl={props.shop.imageUrl} />
+                        <ImgInput register={register} label="Logo" id={"brandImageFile"} icon={PhotographIcon} imageUrl={props.shop.brandImageUrl} />
 
                         <div className="flex-grow space-y-6">
                             <input type="number" hidden {...register('id')} />
-                            <input type="number" hidden {...register('imageUrl')} />
+                            <input hidden {...register('imageUrl')} />
+                            <input hidden {...register('brandImageUrl')} />
 
                             <div>
-                                <FormGroup register={register} label="Nome" id={"name"} placeholder="Nome da loja" required/>
+                                <FormGroup register={register} label="Nome" id={"name"} placeholder="Nome da loja" required />
                             </div>
                             <div>
                                 <TextArea register={register} label="Descrição" id={"desc"} placeholder="Uma breve descrição de sua loja" rows={2} />
@@ -67,9 +70,6 @@ export default function Form(props: FormProps) {
                         </div>
                         <div className="col-span-12 sm:col-span-6">
                             <FormGroup register={register} label="Email" id={"email"} placeholder="email@email.com.br" />
-                        </div>
-                        <div className="col-span-12 sm:col-span-6">
-                            <FormGroup register={register} label="URL da logo" id={"imageUrl"} placeholder="https://minhalogo.com/image.png" />
                         </div>
                         <div className="col-span-12 sm:col-span-6">
                             <SelectInput register={register} label="Tema" id="colorTheme" required selectItems={renderSelectItems()} />
