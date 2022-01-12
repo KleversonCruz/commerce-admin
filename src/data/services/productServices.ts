@@ -4,7 +4,7 @@ import { api } from "@data/services/api";
 export async function GetProducts(shopId: number, queryParams?: any) {
     const { page, name, limit } = queryParams || {};
 
-    var response = await api.get(`/Product`, { params: { shopId, name, page, limit} })
+    var response = await api.get(`/product`, { params: { shopId, name, page, limit} })
         .then(response => {
             const json: any = response.data
             if (json) {
@@ -44,7 +44,7 @@ export async function AddProduct(product: Product) {
         },
     };
 
-    var response = await api.post(`/Product`, formData, config)
+    var response = await api.post(`/product`, formData, config)
         .then(response => {
             if (response.status === 200) {
                 return response.status
@@ -65,7 +65,7 @@ export async function UpdateProduct(product: Product){
             'Content-Type': 'multipart/form-data',
         },
     };
-    var response = await api.put(`/Product/${product.id}`, formData, config)
+    var response = await api.put(`/product/${product.id}`, formData, config)
         .then(response => {
             if (response.status === 200) {
                 return response.status
@@ -80,7 +80,7 @@ export async function UpdateProduct(product: Product){
 }
 
 export async function DeleteProduct(product: Product) {
-    var response = await api.delete(`/Product/${product.id}`)
+    var response = await api.delete(`/product/${product.id}`)
         .then(response => {
             if (response.status === 200) {
                 return response.status

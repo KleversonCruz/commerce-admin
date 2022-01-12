@@ -8,7 +8,7 @@ export async function signInRequest(user: UserSignIn): Promise<any> {
         "userName": user.userName
     });
 
-    var response = await api.post('/User/Login', data)
+    var response = await api.post('/user/login', data)
     .then(response => {
         const json: any = response.data
         return {
@@ -25,7 +25,7 @@ export async function signInRequest(user: UserSignIn): Promise<any> {
 
 export async function recoverUserInformation(): Promise<any>{
     
-    var response = await api.get('/User')
+    var response = await api.get('/user')
     .then(response => {
         const json = response.data
         return {

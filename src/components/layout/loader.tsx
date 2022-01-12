@@ -15,7 +15,7 @@ export default function Loader(props: LoaderProps) {
     const { isAuthenticated } = useAuth()
 
     useEffect(() => setMounted(true), []);
-    
+
 
     function renderContent() {
         return (

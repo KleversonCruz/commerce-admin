@@ -86,7 +86,7 @@ export default function Table(props: TableProps) {
                             <div className="flex items-center">
                               <div className="flex-shrink-0 h-10 w-10">
                                 {item?.imageUrl ? (
-                                  <img className="h-10 w-10 rounded-md" src={`${api.defaults.baseURL}/images/${item.imageUrl}`} alt="" />
+                                  <img className="h-10 w-10 rounded-md" src={`../images/${item.imageUrl}`} alt="" />
                                 ) : (
                                   <span className="inline-block h-10 w-10 rounded-md overflow-hidden bg-th-accent-medium">
                                     <PhotographIcon className="text-gray-100 h-full w-full p-2" />

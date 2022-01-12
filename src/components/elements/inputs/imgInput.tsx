@@ -29,7 +29,7 @@ export default function ImgInput(props: ImgInputProps) {
         }
         else if (props.imageUrl) {
             return (
-                <img className="relative rounded-md w-40 h-40" src={`${api.defaults.baseURL}/images/${props.imageUrl}`} alt={props?.alt} />
+                <img className="relative rounded-md w-40 h-40" src={`../images/${props.imageUrl}`} alt={props?.alt} />
             )
         } else {
             return (

@@ -68,7 +68,7 @@ export default function Sidebar(props) {
                 {shop?.brandImageUrl ? (
                   <img
                     className="h-8 w-auto"
-                    src={`${api.defaults.baseURL}/images/${shop?.brandImageUrl}`}
+                    src={`../images/${shop?.brandImageUrl}`}
                     alt="Workflow"
                   />
                 ) : null}
@@ -116,7 +116,7 @@ export default function Sidebar(props) {
               {shop?.brandImageUrl ? (
                 <img
                   className="h-8 w-auto"
-                  src={`${api.defaults.baseURL}/images/${shop?.brandImageUrl}`}
+                  src={`../images/${shop?.brandImageUrl}`}
                   alt="Workflow"
                 />
               ) : null}

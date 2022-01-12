@@ -4,7 +4,7 @@ import { api } from "@data/services/api";
 export async function GetCustomers(shopId: number, queryParams?: any) {
     const { page, name, limit } = queryParams || {};
 
-    var response = await api.get(`/Customer`, { params: { shopId, name, page, limit } })
+    var response = await api.get(`/customer`, { params: { shopId, name, page, limit } })
         .then(response => {
             const json: any = response.data
             if (json) {

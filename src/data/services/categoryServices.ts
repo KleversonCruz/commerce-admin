@@ -10,7 +10,7 @@ export async function GetCategories(shopId: number, queryParams?: any) {
         },
     };
     
-    var response = await api.get('/Category', { params: { shopId, name, page, limit } })
+    var response = await api.get('/category', { params: { shopId, name, page, limit } })
         .then(response => {
             const json: any = response.data
             if (json) {
@@ -52,7 +52,7 @@ export async function AddCategory(category: Category) {
         },
     };
 
-    var response = await api.post('/Category', formData, config)
+    var response = await api.post('/category', formData, config)
         .then(response => {
             if (response.status === 200) {
                 return response.status
@@ -75,7 +75,7 @@ export async function UpdateCategory(category: Category) {
             'Content-Type': 'multipart/form-data',
         },
     };
-    var response = await api.put(`/Category/${category.id}`, formData, config)
+    var response = await api.put(`/category/${category.id}`, formData, config)
         .then(response => {
             if (response.status === 200) {
                 return response.status
@@ -90,7 +90,7 @@ export async function UpdateCategory(category: Category) {
 }
 
 export async function DeleteCategory(categoria: Category) {
-    var response = await api.delete(`/Category/${categoria.id}`)
+    var response = await api.delete(`/category/${categoria.id}`)
         .then(response => {
             if (response.status === 200) {
                 return response.status

@@ -1,28 +1,24 @@
-import Category from "@data/core/Category"
-import { useEffect, useState } from "react"
-import useNotify from "./useNotify"
-
 export default function useUser() {
 
-        type SignInRequestData = {
-            userName: string
-            password: string
-        }
+    type SignInRequestData = {
+        userName: string
+        password: string
+    }
 
-        async function signInRequest(data: SignInRequestData) {
+    async function signInRequest(data: SignInRequestData) {
         var myHeaders = new Headers();
         myHeaders.append("Content-Type", "application/json");
 
         var raw = JSON.stringify({
-        "password": data.password,
-        "userName": data.userName
+            "password": data.password,
+            "userName": data.userName
         });
 
         var requestOptions: RequestInit = {
-        method: 'POST',
-        headers: myHeaders,
-        body: raw,
-        redirect: 'follow'
+            method: 'POST',
+            headers: myHeaders,
+            body: raw,
+            redirect: 'follow'
         };
 
         try {

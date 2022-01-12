@@ -5,7 +5,7 @@ export function getAPIClient(ctx?: any) {
     const { 'admin.auth.token': token } = parseCookies()
 
     const api = axios.create({
-        baseURL: 'https://kwcruz.com.br'
+        baseURL: 'api/'
     })
 
     api.defaults.headers['Content-Type'] = 'application/json'
