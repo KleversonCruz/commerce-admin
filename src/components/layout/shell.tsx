@@ -26,7 +26,7 @@ export default function Shell(props) {
     const { setTheme } = useTheme();
     const { shop: loja } = useApp()
 
-    useEffect(() => { setTheme(loja?.colorTheme), [] })
+    useEffect(() => { setTheme(loja?.colorTheme) , [] })
 
     return (
         <>

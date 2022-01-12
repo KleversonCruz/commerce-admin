@@ -1,6 +1,7 @@
 import Shop from "@data/core/Shop";
 import { createContext, useEffect, useState } from "react";
 import { GetShopById as getLojaRequest } from "@data/services/shopServices";
+import { loja } from "src/pages/api/mock";
 
 type AppContextType = {
     themes;
@@ -28,14 +29,30 @@ const themes = [
 ];
 
 export function AppProvider({ children }) {
-    const [shop, setShop] = useState<Shop | null>(null)
+    const dataMock: Shop = new Shop(
+        loja.id,
+        loja.cnpj,
+        loja.name,
+        loja.desc,
+        loja.email,
+        loja.brandImageUrl,
+        null,
+        loja.imageUrl,
+        null,
+        loja.colorTheme,
+        [],
+        [],
+        []
+    )
+
+    const [shop, setShop] = useState<Shop | null>(dataMock)
     const [isLoading, setIsLoading] = useState(true)
 
     async function loadLoja(shopId: number) {
-        const data = await getLojaRequest(shopId).then(response => {
-            return response?.data
-        })
-        setShop(data)
+        // const data = await getLojaRequest(shopId).then(response => {
+        //     return response?.data
+        // })
+        //setShop(data)
     }
 
     async function changeIsLoading(state: boolean) {
