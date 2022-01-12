@@ -36,11 +36,11 @@ export default function Form() {
         >
           <form className="space-y-6" onSubmit={handleSubmit(handleSignIn)}>
             <div>
-              <FormGroup register={register} id="userName" placeholder="Usuário" label="Usuário" required />
+              <FormGroup register={register} id="userName" placeholder="Usuário teste: admin" label="Usuário" required />
             </div>
 
             <div>
-              <FormGroup register={register} id="password" placeholder="Senha" label="Senha" required type="password" />
+              <FormGroup register={register} id="password" placeholder="Senha teste: 1234" label="Senha" required type="password" />
             </div>
 
 

@@ -86,8 +86,6 @@ export function AuthProvider({ children }) {
 
   useEffect(() => {
     const { 'admin.auth.token': token } = parseCookies()
-    //for test only
-    signIn({ userName: '1', password: '1' })
     if (token) {
       configureSession(token)
     } else {
